@@ -13,7 +13,9 @@ export class JsonManagerService {
   downloadJsonHref;
   json;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {
+    json['test'] = null
+  }
 
   generateDownloadUrlFromJson() {
     const blob = new Blob([JSON.stringify(this.json, null, 2)], {
