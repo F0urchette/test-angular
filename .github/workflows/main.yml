@@ -9,7 +9,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
       with:
-        source-directory: 'user-docs'
+        source-directory: 'user-docs/'
         destination-github-username: 'F0urchette'
         destination-repository-name: 'testAngular'
         user-email: user@doc.fr
