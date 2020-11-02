@@ -4,12 +4,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Pushes to another repository
-      uses: cpina/github-action-push-to-another-repository@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
-      with:
-        source-directory: 'src'
-        destination-github-username: 'F0urchette'
-        destination-repository-name: 'testAngular'
-        user-email: user@doc.fr
+      - uses: actions/checkout@master
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
+        with:
+          source-directory: 'src'
+          destination-github-username: 'F0urchette'
+          destination-repository-name: 'testAngular'
+          user-email: user@doc.fr
