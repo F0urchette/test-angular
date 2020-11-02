@@ -4,19 +4,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Pushes to another repository
+      uses: cpina/github-action-push-to-another-repository@master
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
       with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Commit files
-      run: |
-        git config --local user.email "user@doc.com"
-        git config --local user.name "Deploy user doc"
-        git add .
-        git commit -m "Add changes"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-        branch: master
-        repository: testAngular
+        source-directory: 'user-docs'
+        destination-github-username: 'F0urchette'
+        destination-repository-name: 'testAngular'
+        user-email: user@doc.fr
