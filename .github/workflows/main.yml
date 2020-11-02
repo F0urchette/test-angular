@@ -1,16 +1,21 @@
 name: Push directory to another repository
 on: push
 jobs:
-  master:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: cpina/github-action-push-to-another-repository@v1.1
-        with:
-          # Source directory from the origin directory
-          source-directory: user-docs
-            # Name of the destination username/organization
-          destination-github-username: F0urchette
-            # Destination repository
-          destination-repository-name: testAngular
-            # Email for the git commit
-          user-email: mika.pons@outlook.fr
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Commit files
+      run: |
+        git config --local user.email "user@doc.com"
+        git config --local user.name "Deploy user doc"
+        git commit -m "Add changes" user-docs/
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.MY_GITHUB_TOKEN }}
+        branch: master
+        repository: testAngular
