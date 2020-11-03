@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - user-docs
+      - "user-docs/**"
 jobs:
   deploy-user-docs:
     runs-on: ubuntu-latest
