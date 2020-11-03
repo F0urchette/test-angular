@@ -7,9 +7,3 @@
 * [x] 12
 * [ ] 21
 * [ ] 22
-
-.Optional Title
-[source,perl]
-die 'connect: '.$dbh->errstr;
-
-Not a code in next paragraph.
