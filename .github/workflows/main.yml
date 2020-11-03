@@ -1,16 +1,22 @@
 name: Push directory to another repository
-on: push
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - user-docs
 jobs:
-  build:
+  deploy-user-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Pushes to another repository
+      - name: Pushes user docs to organization repository
         uses: cpina/github-action-push-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           source-directory: 'user-docs'
+          target-branch: gh-pages
           destination-github-username: 'F0urchette'
           destination-repository-name: 'testAngular'
           user-email: user@doc.fr
