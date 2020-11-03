@@ -13,6 +13,7 @@ jobs:
       - name: Pushes user docs to organization repository
         uses: cpina/github-action-push-to-another-repository@master
         env:
+          # F0urchette personal access token
           API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           source-directory: 'user-docs'
