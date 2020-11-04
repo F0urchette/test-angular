@@ -18,6 +18,6 @@ jobs:
         with:
           source-directory: 'user-docs'
           target-branch: gh-pages
-          destination-github-username: 'F0urchette'
-          destination-repository-name: 'testAngular'
+          destination-github-username: 'TestingGithubPages'
+          destination-repository-name: 'TestingGithubPages.github.io'
           user-email: user@doc.fr
