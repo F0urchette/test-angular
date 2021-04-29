@@ -1,0 +1,27 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: firebase
+    versions:
+    - 8.2.1
+    - 8.2.10
+    - 8.3.0
+    - 8.3.1
+  - dependency-name: "@angular/animations"
+    versions:
+    - 10.1.6
+    - 11.1.1
+    - 11.2.4
+    - 11.2.5
+  - dependency-name: "@fortawesome/fontawesome-free"
+    versions:
+    - 5.15.1
+    - 5.15.2
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
