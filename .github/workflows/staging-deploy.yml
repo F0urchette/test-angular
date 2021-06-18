@@ -4,11 +4,11 @@ on:
     types: [created, edited]
 jobs:
   deploy-user-docs:
-    if: ${{ github.event_name == 'pull_request' && contains(github.event.comment.body, '/deploy') }}
+    if: ${{ contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, '/deploy') }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: echo "Deploy"
+        run: echo "Deploy $GITHUB_EVENT_NAME"
       - uses: actions/checkout@master
       - name: Pushes user docs to organization repository
         uses: cpina/github-action-push-to-another-repository@master
