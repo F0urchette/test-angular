@@ -5,7 +5,6 @@ on:
       - "**"
 jobs:
   deploy-user-docs:
-    if: ${{ github.ref != github.head_ref }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
