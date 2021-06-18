@@ -1,0 +1,23 @@
+name: Staging deploy
+on: 
+  pull_request:
+    branches: [master]
+    types: [labeled]
+jobs:
+  deploy-user-docs:
+    if: ${{ github.event.label.name == 'deploy-staging' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "Deploy $GITHUB_EVENT_NAME"
+      - name: Pushes user docs to organization repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          # F0urchette personal access token
+          API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
+        with:
+          source-directory: 'user-docs'
+          target-branch: gh-pages
+          destination-github-username: 'TestingGithubPages'
+          destination-repository-name: 'TestingGithubPages.github.io'
+          user-email: user@doc.fr
