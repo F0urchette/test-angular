@@ -1,12 +1,11 @@
 name: Push directory to another repository
 on: 
-  push:
+  pull_request:
     branches:
-      - master
-    paths:
-      - "user-docs/**"
+      - "**"
 jobs:
   deploy-user-docs:
+    if: ${{ GITHUB_REF != GITHUB_HEAD_REF }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
