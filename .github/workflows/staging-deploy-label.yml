@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Echo
         run: echo "Deploy $GITHUB_EVENT_NAME"
+      - uses: actions/checkout@v2
       - name: Pushes user docs to organization repository
         uses: cpina/github-action-push-to-another-repository@master
         env:
