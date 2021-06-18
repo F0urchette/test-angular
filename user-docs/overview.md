@@ -4,3 +4,5 @@ And a last one
 hey
 
 Don't worry, this is just a test
+
+Second test
