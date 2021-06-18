@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Get index.md
         id: index
-        run: echo ::set-output name=index::$(cat index.md)
+        run: echo ::set-output name=index::$(cat user-docs/index.md)
       - name: Get overview.md
         id: overview
-        run: echo ::set-output name=overview::$(cat overview.md)
+        run: echo ::set-output name=overview::$(cat user-docs/overview.md)
       - name: Test output
         run: echo ${{ steps.index.outputs.index }} && echo ${{ steps.overview.outputs.overview }}
       - uses: actions/checkout@master
