@@ -2,11 +2,19 @@ name: Push directory to another repository
 on: 
   pull_request:
     branches:
-      - "**"
+      - "master"
 jobs:
   deploy-user-docs:
     runs-on: ubuntu-latest
     steps:
+      - name: Get index.md
+        id: index
+        run: echo ::set-output name=index::$(cat index.md)
+      - name: Get overview.md
+        id: overview
+        run: echo ::set-output name=overview::$(cat overview.md)
+      - name: Test output
+        run: echo ${{ steps.index.outputs.index }} && echo ${{ steps.overview.outputs.overview }}
       - uses: actions/checkout@master
       - name: Pushes user docs to organization repository
         uses: cpina/github-action-push-to-another-repository@master
