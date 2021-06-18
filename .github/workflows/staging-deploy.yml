@@ -1,0 +1,23 @@
+name: Staging deploy
+on: 
+  issue_comment:                                     
+    types: [created, edited]
+jobs:
+  deploy-user-docs:
+    if: ${{ github.event_name == 'pull_request' && contains(github.event.comment.body, '/deploy') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "Deploy"
+      - uses: actions/checkout@master
+      - name: Pushes user docs to organization repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          # F0urchette personal access token
+          API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
+        with:
+          source-directory: 'user-docs'
+          target-branch: gh-pages
+          destination-github-username: 'TestingGithubPages'
+          destination-repository-name: 'TestingGithubPages.github.io'
+          user-email: user@doc.fr
