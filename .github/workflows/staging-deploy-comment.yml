@@ -23,3 +23,16 @@ jobs:
           destination-github-username: 'TestingGithubPages'
           destination-repository-name: 'TestingGithubPages.github.io'
           user-email: user@doc.fr
+  comment-staging-link:
+    needs: deploy-user-docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Staging deployed on https://git4school-staging.firebaseapp.com/'
+            })
