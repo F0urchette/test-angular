@@ -31,7 +31,7 @@ jobs:
           script: |
             github.issues.createComment({
               issue_number: context.issue.number,
-              owner: 'Staging deployment',
+              owner: context.repo.owner,
               repo: context.repo.repo,
               body: 'Staging deployed on https://git4school-staging.firebaseapp.com/'
             })
